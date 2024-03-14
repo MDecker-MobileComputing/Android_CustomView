@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 
@@ -44,6 +45,7 @@ public class BalkenDiagrammView extends View {
 
         _paint = new Paint();
         _paint.setStyle(Paint.Style.FILL);
+
     }
 
     /**
@@ -150,6 +152,26 @@ public class BalkenDiagrammView extends View {
         final int indexFarbe = balkenIndex % FARBEN.length;
 
         return FARBEN[ indexFarbe ];
+    }
+
+    /**
+     * Event-Handler für Touch-Events auf dem View durch den Nutzer. Es werden nur die Koordinaten
+     * auf den Logger geschrieben, man könnte aber z.B. auch auswerten, ob auf einen Balken
+     * geklickt wurde, und dann Details zu dem Balken (z.B. genauer Prozentwert) anzeigen.
+     *
+     * @param event Das Motion-Event
+     *
+     * @return {@code true}, wenn das Ereignis "verbraucht" wurde, sonst {@code false.}
+     */
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        float x = event.getX();
+        float y = event.getY();
+
+        Log.i(TAG4LOGGING, "Touch-Event mit folgender Koordinate: (" + x + ", " + y + ")");
+
+        return super.onTouchEvent(event);
     }
 
 }

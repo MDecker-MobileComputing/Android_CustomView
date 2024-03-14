@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/neuDatenButton"
         android:background="@drawable/schwarzer_rand"
-        app:abstandObenUnten="50" />
+        app:abstandObenUnten="1" />
         <!-- das letzte Attribute ist ein Custom Attribut (siehe auch res/values/attrs.xml)-->
 
     <Button
