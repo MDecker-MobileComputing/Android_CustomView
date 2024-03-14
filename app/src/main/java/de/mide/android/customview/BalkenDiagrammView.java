@@ -49,7 +49,7 @@ public class BalkenDiagrammView extends View {
     public void setBalkenwerte(float[] prozentwerteArray) {
 
         _balkenwerteProzent = prozentwerteArray;
-        invalidate();
+        //invalidate();
     }
 
 
