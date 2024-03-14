@@ -5,7 +5,7 @@
     android:padding="5dp">
 
 
-    <de.mide.android.customview.MeinDiagrammView
+    <de.mide.android.customview.BalkenDiagrammView
         android:id="@+id/balkendiagramm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

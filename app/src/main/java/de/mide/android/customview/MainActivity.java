@@ -3,11 +3,16 @@ package de.mide.android.customview;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
+
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String TAG4LOGGING = "Balkendiagramm";
+
     /** Instanz des Custom View */
-    private MeinDiagrammView _balkenDiagramm = null;
+    private BalkenDiagrammView _balkenDiagramm = null;
 
 
     /**
@@ -19,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        _balkenDiagramm = (MeinDiagrammView) findViewById(R.id.balkendiagramm);
+        _balkenDiagramm = (BalkenDiagrammView) findViewById(R.id.balkendiagramm);
 
         float[] prozentwerteArray = balkenwerteErzeugen();
         _balkenDiagramm.setBalkenwerte(prozentwerteArray);
@@ -37,11 +42,14 @@ public class MainActivity extends AppCompatActivity {
      */
     private static float[] balkenwerteErzeugen() {
 
-        float[] prozentwerteArray = new float[ 4 ];
+        final float[] prozentwerteArray = new float[ 4 ];
         for (int i = 0; i < prozentwerteArray.length; i++) {
 
             prozentwerteArray[i] = (float)(Math.random() * 95 + 5);
         }
+
+        final String arrayString = Arrays.toString(prozentwerteArray);
+        Log.i(TAG4LOGGING, "Neue Zufallswerte für Balkenhöhe erzeugt: " + arrayString);
 
         return prozentwerteArray;
     }

@@ -11,7 +11,8 @@ import android.view.View;
 /**
  * Von View abgeleitete Klasse die ein Balkendiagramm darstellt.
  */
-public class MeinDiagrammView extends View {
+public class BalkenDiagrammView extends View {
+
 
     private int _anzahlBalken = 4;
 
@@ -31,7 +32,7 @@ public class MeinDiagrammView extends View {
     /**
      * Konstruktor; erzeugt Paint-Objekt mit Stil für Rechtecke.
      */
-    public MeinDiagrammView(Context context, AttributeSet attrs) {
+    public BalkenDiagrammView(Context context, AttributeSet attrs) {
 
         super(context, attrs);
 
