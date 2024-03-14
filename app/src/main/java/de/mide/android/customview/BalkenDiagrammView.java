@@ -93,12 +93,6 @@ public class BalkenDiagrammView extends View {
 
         super.onDraw(canvas);
 
-        if (_balkenwerteProzent == null) {
-
-            Log.i(TAG4LOGGING, "Noch keine Werte für Diagramm da, kann nichts zeichnen.");
-            return;
-        }
-
         final int balkenbreite  = getBalkenbreite();
         final int balkenOffsetX = _abstandZwischenBalken + balkenbreite;
 
