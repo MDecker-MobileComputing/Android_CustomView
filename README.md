@@ -2,7 +2,8 @@
 
 <br>
 
-Das Repo enthält eine native Android-App (Java), die ein *Custom View* zur Anzeige eines einfachen Balkendiagramms enthält.
+Das Repo enthält eine native Android-App (Java), die eine Klasse [BalkenDiagrammView](app/src/main/java/de/mide/android/customview/BalkenDiagrammView.java#L19) *Custom View* 
+zur Anzeige eines einfachen Balkendiagramms enthält.
 
 <br>
 
