@@ -27,11 +27,11 @@ public class BalkenDiagrammView extends View {
      */
     private int _abstandObenUnten = 5;
 
-    /** Paint-Objekt enthält Infos für Stil/Farbe für zu zeichnende Objekte. */
-    private Paint _paint;
-
     /** Array mit darzustellenden Werten in Prozent der max möglichen Balkenhöhe. */
     private float[] _balkenwerteProzent = null;
+
+    /** Paint-Objekt enthält Infos für Stil/Farbe für zu zeichnende Objekte. */
+    private Paint _paint;
 
 
     /**
