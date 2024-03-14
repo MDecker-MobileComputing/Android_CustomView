@@ -3,6 +3,7 @@ package de.mide.android.customview;
 import static de.mide.android.customview.MainActivity.TAG4LOGGING;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -16,10 +17,13 @@ import android.view.View;
  */
 public class BalkenDiagrammView extends View {
 
-    /** Abstand zwischen den Balken in Pixeln */
+    /** Abstand zwischen den Balken in Pixeln. */
     private int _abstandZwischenBalken = 10;
 
-    /** Abstand der Unterseite der Balken um unteren Rand (in Pixel), und min Abstand vom oberen Rand. */
+    /**
+     * Abstand der Unterseite der Balken um unteren Rand (in Pixel), und min Abstand vom oberen Rand;
+     * kann als <i>Custom Attribute</i> in der Layout-Datei gesetzt werden.
+     */
     private int _abstandObenUnten = 5;
 
     /** Paint-Objekt enthält Infos für Stil/Farbe für zu zeichnende Objekte. */
@@ -36,8 +40,30 @@ public class BalkenDiagrammView extends View {
 
         super(context, attrs);
 
+        holeCustomAttribute(context, attrs);
+
         _paint = new Paint();
         _paint.setStyle(Paint.Style.FILL);
+    }
+
+    /**
+     * Custom Attribute für das View aus Layout-Datei auslesen.
+     * Diese Attribute müssen auch in der Ressourcen-Datei {@code res/values/attrs.xml} deklariert sein.
+     */
+    private void holeCustomAttribute(Context context, AttributeSet attrs) {
+
+        TypedArray a = context.getTheme()
+                              .obtainStyledAttributes( attrs, R.styleable.BalkenDiagrammView, 0, 0 );
+
+        try {
+
+            _abstandObenUnten = a.getInteger(R.styleable.BalkenDiagrammView_abstandObenUnten, 5); // 5=default value
+            Log.i(TAG4LOGGING, "Custom Attribut 'abstandObenUnten' ausgelesen: " + _abstandObenUnten);
+
+        } finally {
+
+            a.recycle();
+        }
     }
 
 

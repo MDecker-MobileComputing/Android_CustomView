@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     /** Darzustellende Prozentwerte (Höhe der Balken). */
     private float[] _prozentwerteArray = null;
 
-    /** Instanz des Custom View */
+    /** Instanz des Custom View, zeigt ein Balkendiagramm an. */
     private BalkenDiagrammView _balkenDiagramm = null;
 
 
