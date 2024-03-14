@@ -8,6 +8,16 @@ Das Repo enthält eine native Android-App (Java), die ein *Custom View* zur Anze
 
 ----
 
+## Screenshot ##
+
+<br>
+
+![Screenshot 1](screenshot_1.png)
+
+<br>
+
+----
+
 ## License ##
 
 <br>
