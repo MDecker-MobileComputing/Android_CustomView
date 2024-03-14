@@ -1,10 +1,13 @@
 package de.mide.android.customview;
 
+import static de.mide.android.customview.MainActivity.TAG4LOGGING;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 
@@ -12,7 +15,7 @@ import android.view.View;
  * Von View abgeleitete Klasse die ein Balkendiagramm darstellt.
  */
 public class BalkenDiagrammView extends View {
-    
+
     /** Abstand zwischen den Balken in Pixeln */
     private int _abstandZwischenBalken = 10;
 
@@ -46,8 +49,8 @@ public class BalkenDiagrammView extends View {
     public void setBalkenwerte(float[] prozentwerteArray) {
 
         _balkenwerteProzent = prozentwerteArray;
+        invalidate();
     }
-
 
 
     /**
@@ -59,6 +62,12 @@ public class BalkenDiagrammView extends View {
     protected void onDraw(Canvas canvas) {
 
         super.onDraw(canvas);
+
+        if (_balkenwerteProzent == null) {
+
+            Log.i(TAG4LOGGING, "Noch keine Werte für Diagramm da, kann nichts zeichnen.");
+            return;
+        }
 
         final int balkenbreite  = getBalkenbreite();
         final int balkenOffsetX = _abstandZwischenBalken + balkenbreite;

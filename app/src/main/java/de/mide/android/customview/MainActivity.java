@@ -7,12 +7,22 @@ import android.util.Log;
 
 import java.util.Arrays;
 
+
+/**
+ * Haupt-Activity der App, verwendet Custom View für Darstellung eines Balkendiagramms.
+ */
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG4LOGGING = "Balkendiagramm";
 
+    /** Key, um Array mit Prozentwerten in <i>Saved Instance State</i> zu sichern. */
+    private static final String PROZENTWERTE_GESICHERT = "prozentwerte-gesichert";
+
     /** Instanz des Custom View */
     private BalkenDiagrammView _balkenDiagramm = null;
+
+    /** Darzustellende Prozentwerte (Höhe der Balken). */
+    private float[] _prozentwerteArray = null;
 
 
     /**
@@ -26,8 +36,18 @@ public class MainActivity extends AppCompatActivity {
 
         _balkenDiagramm = (BalkenDiagrammView) findViewById(R.id.balkendiagramm);
 
-        float[] prozentwerteArray = balkenwerteErzeugen();
-        _balkenDiagramm.setBalkenwerte(prozentwerteArray);
+        _prozentwerteArray = null;
+        if (savedInstanceState == null) {
+
+            _prozentwerteArray = balkenwerteErzeugen();
+
+        } else {
+
+            _prozentwerteArray = savedInstanceState.getFloatArray(PROZENTWERTE_GESICHERT);
+            final String arrayString = Arrays.toString(_prozentwerteArray);
+        }
+
+        _balkenDiagramm.setBalkenwerte(_prozentwerteArray);
     }
 
 
@@ -52,6 +72,23 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG4LOGGING, "Neue Zufallswerte für Balkenhöhe erzeugt: " + arrayString);
 
         return prozentwerteArray;
+    }
+
+
+    /**
+     * Array mit Prozentwerten  vor möglicher Zerstörung der Activity-Instanz
+     * speichern.
+     *
+     * @param savedInstanceState Bundle in which to place your saved state.
+     */
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+
+        super.onSaveInstanceState(savedInstanceState);
+
+        savedInstanceState.putFloatArray(PROZENTWERTE_GESICHERT, _prozentwerteArray);
+
+        Log.i(TAG4LOGGING, "Prozentwerte gesichert.");
     }
 
 }
