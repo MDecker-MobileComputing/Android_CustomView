@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import java.util.Arrays;
 
@@ -18,11 +19,14 @@ public class MainActivity extends AppCompatActivity {
     /** Key, um Array mit Prozentwerten in <i>Saved Instance State</i> zu sichern. */
     private static final String PROZENTWERTE_GESICHERT = "prozentwerte-gesichert";
 
-    /** Instanz des Custom View */
-    private BalkenDiagrammView _balkenDiagramm = null;
+    /** Anzahl der im Diagramm darzustellenden Balken. */
+    private static final int ANZAHL_BALKEN = 4;
 
     /** Darzustellende Prozentwerte (Höhe der Balken). */
     private float[] _prozentwerteArray = null;
+
+    /** Instanz des Custom View */
+    private BalkenDiagrammView _balkenDiagramm = null;
 
 
     /**
@@ -45,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
             _prozentwerteArray = savedInstanceState.getFloatArray(PROZENTWERTE_GESICHERT);
             final String arrayString = Arrays.toString(_prozentwerteArray);
+            Log.i(TAG4LOGGING, "Prozentwerte wiederhergestellt: " + arrayString);
         }
 
         _balkenDiagramm.setBalkenwerte(_prozentwerteArray);
@@ -62,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private static float[] balkenwerteErzeugen() {
 
-        final float[] prozentwerteArray = new float[ 4 ];
+        final float[] prozentwerteArray = new float[ ANZAHL_BALKEN ];
         for (int i = 0; i < prozentwerteArray.length; i++) {
 
             prozentwerteArray[i] = (float)(Math.random() * 95 + 5);
@@ -89,6 +94,18 @@ public class MainActivity extends AppCompatActivity {
         savedInstanceState.putFloatArray(PROZENTWERTE_GESICHERT, _prozentwerteArray);
 
         Log.i(TAG4LOGGING, "Prozentwerte gesichert.");
+    }
+
+
+    /**
+     * Event-Handler-Methode für Klick auf Button "Neue Daten laden".
+     *
+     * @param view UI-Element, welches das Event ausgelöst hat
+     */
+    public void onNeueDatenButton(View view) {
+
+        _prozentwerteArray = balkenwerteErzeugen();
+        _balkenDiagramm.setBalkenwerte(_prozentwerteArray);
     }
 
 }
