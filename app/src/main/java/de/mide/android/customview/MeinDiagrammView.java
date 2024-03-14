@@ -24,10 +24,7 @@ public class MeinDiagrammView extends View {
     /** Paint-Objekt enthält Infos für Stil/Farbe für zu zeichnende Objekte. */
     private Paint _paint;
 
-    /**
-     * Array mit darzustellenden Balkenwerten in Prozent; wird in Member-Variable gespeichert,
-     * damit beim Drehen des Displays die selben Werte dargestellt werden.
-     */
+    /** Array mit darzustellenden Werten in Prozent der max möglichen Balkenhöhe. */
     private float[] _balkenwerteProzent = null;
 
 
@@ -40,26 +37,19 @@ public class MeinDiagrammView extends View {
 
         _paint = new Paint();
         _paint.setStyle(Paint.Style.FILL);
-
-        balkenwerteErzeugen();
     }
 
 
     /**
-     * Zufällige Balkenwerte (Höhe in Prozent) erzeugen.
-     * <br><br>
+     * Darzustellende Balkenwerte übergeben
      *
-     * Für jeden Balken wird ein zufälliger Prozentwert zwischen 5% und 100%
-     * erzeugt (mindestens 5%, damit Balken auch sichtbar ist).
+     * @param prozentwerteArray Array mit darzustellenden Balkenwerten in Prozent
      */
-    private void balkenwerteErzeugen() {
+    public void setBalkenwerte(float[] prozentwerteArray) {
 
-        _balkenwerteProzent = new float[ _anzahlBalken ];
-        for (int i = 0; i < _anzahlBalken; i++) {
-
-            _balkenwerteProzent[i] = (float)(Math.random() * 95 + 5);
-        }
+        _balkenwerteProzent = prozentwerteArray;
     }
+
 
 
     /**
