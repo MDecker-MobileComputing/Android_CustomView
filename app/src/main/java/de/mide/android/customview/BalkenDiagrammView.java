@@ -12,10 +12,7 @@ import android.view.View;
  * Von View abgeleitete Klasse die ein Balkendiagramm darstellt.
  */
 public class BalkenDiagrammView extends View {
-
-
-    private int _anzahlBalken = 4;
-
+    
     /** Abstand zwischen den Balken in Pixeln */
     private int _abstandZwischenBalken = 10;
 
@@ -63,14 +60,14 @@ public class BalkenDiagrammView extends View {
 
         super.onDraw(canvas);
 
-        int balkenbreite  = getBalkenbreite();
-        int balkenOffsetX = _abstandZwischenBalken + balkenbreite;
+        final int balkenbreite  = getBalkenbreite();
+        final int balkenOffsetX = _abstandZwischenBalken + balkenbreite;
 
-        int maxHoeheBalken = getHeight() - 2* _abstandObenUnten;
+        final int maxHoeheBalken = getHeight() - 2* _abstandObenUnten;
 
-        int unten = getHeight() - _abstandObenUnten;
+        final int unten = getHeight() - _abstandObenUnten;
 
-        for (int i = 0; i < _anzahlBalken; i++) {
+        for (int i = 0; i < _balkenwerteProzent.length; i++) {
 
             int farbe = getBalkenFarbe(i);
             _paint.setColor( farbe );
@@ -81,8 +78,7 @@ public class BalkenDiagrammView extends View {
             int rechts = links + balkenbreite;
             int oben   = maxHoeheBalken - balkenHoehe;
 
-
-            canvas.drawRect(links, oben, rechts, unten, _paint);
+            canvas.drawRect(links, oben, rechts, unten, _paint); // Rechteck zeichnen
         }
     }
 
@@ -95,8 +91,11 @@ public class BalkenDiagrammView extends View {
      */
     private int getBalkenbreite() {
 
-        int nettoBreiteCanvas = getWidth() - (_anzahlBalken + 1)*_abstandZwischenBalken;
-        return nettoBreiteCanvas / _anzahlBalken;
+        final int anzahlBalken = _balkenwerteProzent.length;
+
+        final int nettoBreiteCanvas = getWidth() - (anzahlBalken + 1)*_abstandZwischenBalken;
+
+        return nettoBreiteCanvas / anzahlBalken;
     }
 
 
@@ -111,7 +110,7 @@ public class BalkenDiagrammView extends View {
 
         final int[] FARBEN = { Color.RED, Color.GREEN, Color.BLUE, Color.GRAY, Color.CYAN };
 
-        int indexFarbe = balkenIndex % FARBEN.length;
+        final int indexFarbe = balkenIndex % FARBEN.length;
 
         return FARBEN[ indexFarbe ];
     }
