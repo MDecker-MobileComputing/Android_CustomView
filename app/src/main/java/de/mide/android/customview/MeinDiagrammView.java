@@ -24,7 +24,7 @@ public class MeinDiagrammView extends View {
 
 
     /**
-     * Konstruktor.
+     * Konstruktor; erzeugt Paint-Objekt mit Stil für Rechtecke.
      */
     public MeinDiagrammView(Context context, AttributeSet attrs) {
 
@@ -68,17 +68,22 @@ public class MeinDiagrammView extends View {
 
             canvas.drawRect(links, oben, rechts, unten, _paint);
         }
-
     }
 
+
+    /**
+     * Breite für einen Balken anhand aktuellen Fensterbreite, Anzahl der Balken
+     * und dem Abstand zwischen den Balken berechnen.
+     *
+     * @return Breite für einen Balken in Pixel
+     */
     private int getBalkenbreite() {
 
         int nettoBreiteCanvas = getWidth() - (_anzahlBalken + 1)*_abstandZwischenBalken;
         return nettoBreiteCanvas / _anzahlBalken;
     }
 
-    private final int[] FARBEN = { Color.RED, Color.GREEN, Color.BLUE, Color.GRAY, Color.CYAN };
-
+    
     /**
      * Farbe für Balken nach "Round Robin"-Verfahren bestimmen.
      *
@@ -87,6 +92,8 @@ public class MeinDiagrammView extends View {
      * @return Farbe für Balkenfläche
      */
     private int getBalkenFarbe(int balkenIndex) {
+
+        final int[] FARBEN = { Color.RED, Color.GREEN, Color.BLUE, Color.GRAY, Color.CYAN };
 
         int indexFarbe = balkenIndex % FARBEN.length;
 
