@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
         _balkenDiagramm = (BalkenDiagrammView) findViewById(R.id.balkendiagramm);
 
         _prozentwerteArray = null;
-        if (savedInstanceState == null) {
+        if (savedInstanceState == null ||
+            savedInstanceState.containsKey(PROZENTWERTE_GESICHERT) == false ) {
 
             _prozentwerteArray = balkenwerteErzeugen();
 
