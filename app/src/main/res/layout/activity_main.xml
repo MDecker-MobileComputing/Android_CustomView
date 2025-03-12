@@ -13,7 +13,7 @@
         android:layout_above="@+id/neuDatenButton"
         android:background="@drawable/schwarzer_rand"
         app:abstandObenUnten="1" />
-        <!-- das letzte Attribut ist ein "Custom Attribute" (siehe auch res/values/attrs.xml)-->
+    <!-- das letzte Attribut ist ein "Custom Attribute" (siehe auch res/values/attrs.xml)-->
 
     <Button
         android:id="@+id/neuDatenButton"

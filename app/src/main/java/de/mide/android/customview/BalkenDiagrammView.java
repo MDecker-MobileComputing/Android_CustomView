@@ -55,7 +55,7 @@ public class BalkenDiagrammView extends View {
     private void holeCustomAttribute(Context context, AttributeSet attrs) {
 
         TypedArray a = context.getTheme()
-                              .obtainStyledAttributes( attrs, R.styleable.BalkenDiagrammView, 0, 0 );
+                .obtainStyledAttributes( attrs, R.styleable.BalkenDiagrammView, 0, 0 );
 
         try {
 

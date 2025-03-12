@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         _prozentwerteArray = null;
         if (savedInstanceState == null ||
-            savedInstanceState.containsKey(PROZENTWERTE_GESICHERT) == false ) {
+                savedInstanceState.containsKey(PROZENTWERTE_GESICHERT) == false ) {
 
             _prozentwerteArray = balkenwerteErzeugen();
 
