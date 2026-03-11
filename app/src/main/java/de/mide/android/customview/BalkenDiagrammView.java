@@ -149,7 +149,7 @@ public class BalkenDiagrammView extends View {
         return FARBEN[ indexFarbe ];
     }
 
-    
+
     /**
      * Event-Handler für Touch-Events auf dem View durch den Nutzer. Es werden nur die Koordinaten
      * auf den Logger geschrieben, man könnte aber z.B. auch auswerten, ob auf einen Balken

@@ -4,7 +4,9 @@ plugins {
 
 android {
     namespace 'de.mide.android.customview'
-    compileSdk 36
+    compileSdk {
+        version = release(36)
+    }
 
     defaultConfig {
         applicationId "de.mide.android.customview"
@@ -29,7 +31,6 @@ android {
 }
 
 dependencies {
-
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity
