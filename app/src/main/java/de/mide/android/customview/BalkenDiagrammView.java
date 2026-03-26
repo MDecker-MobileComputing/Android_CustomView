@@ -45,7 +45,6 @@ public class BalkenDiagrammView extends View {
 
         _paint = new Paint();
         _paint.setStyle(Paint.Style.FILL);
-
     }
 
 
